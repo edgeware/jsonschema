@@ -14,7 +14,7 @@ class TestPattern(TestCase):
     
     try:
       jsonschema.validate(data, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_pattern_pass_nonstring(self):
@@ -23,7 +23,7 @@ class TestPattern(TestCase):
     
     try:
       jsonschema.validate(data, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_pattern_fail(self):

@@ -24,7 +24,7 @@ class TestType(TestCase):
       for x in [data1, data2]:
         try:
           jsonschema.validate(x, schema)
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       try:
@@ -38,7 +38,7 @@ class TestType(TestCase):
       for x in [1, 89, 48, 32, 49, 42]:
         try:
           jsonschema.validate(x, {"type":"integer"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -54,7 +54,7 @@ class TestType(TestCase):
       for x in ["surrender?", "nuts!", "ok", "@hsuha", "\'ok?\'", "blah"]:
         try:
           jsonschema.validate(x, {"type":"string"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -70,7 +70,7 @@ class TestType(TestCase):
       for x in [1.2, 89.42, 48.5224242, 32, 49, 42.24324]:
         try:
           jsonschema.validate(x, {"type":"number"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -86,7 +86,7 @@ class TestType(TestCase):
       for x in [True, False]:
         try:
           jsonschema.validate(x, {"type":"boolean"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -102,7 +102,7 @@ class TestType(TestCase):
       for x in [{"blah": "test"}, {"this":{"blah":"test"}}, {1:2, 10:20}]:
         try:
           jsonschema.validate(x, {"type":"object"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -118,7 +118,7 @@ class TestType(TestCase):
       for x in [[1, 89], [48, {"test":"blah"}, "49", 42]]:
         try:
           jsonschema.validate(x, {"type":"array"})
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
       
       #failures
@@ -134,7 +134,7 @@ class TestType(TestCase):
       
       try:
         jsonschema.validate(None, {"type":"null"})
-      except ValueError, e:
+      except ValueError as e:
         self.fail("Unexpected failure: %s" % e)
       
       #failures

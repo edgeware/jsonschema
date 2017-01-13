@@ -28,7 +28,7 @@ class TestOptional(TestCase):
     
     try:
       jsonschema.validate(x, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_optional2(self):

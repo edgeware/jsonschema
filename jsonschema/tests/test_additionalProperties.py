@@ -15,7 +15,7 @@ class TestAdditionalProperties(TestCase):
         try:
           data = {"prop": x}
           jsonschema.validate(data, schema)
-        except ValueError,e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
           
       #failures
@@ -45,7 +45,7 @@ class TestAdditionalProperties(TestCase):
             "prop3": x
           }
           jsonschema.validate(data, schema)
-        except ValueError,e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
           
       #failures
@@ -69,7 +69,7 @@ class TestAdditionalProperties(TestCase):
         try:
           data = {"prop": x}
           jsonschema.validate(data, schema)
-        except ValueError, e:
+        except ValueError as e:
           self.fail("Unexpected failure: %s" % e)
     
     def test_false(self):

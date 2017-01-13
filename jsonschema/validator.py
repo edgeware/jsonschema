@@ -8,6 +8,9 @@
 
 import types, sys, re, copy
 
+__all__ = ['JSONSchemaValidator']
+
+
 class JSONSchemaValidator:
   '''
   Implementation of the json-schema validator that adheres to the 
@@ -107,7 +110,7 @@ class JSONSchemaValidator:
       elif type(converted_fieldtype) == types.DictType:
         try:
           self.__validate(fieldname, x, converted_fieldtype)
-        except ValueError,e:
+        except ValueError as e:
           raise e
       else:
         if type(value) != converted_fieldtype:
@@ -144,7 +147,7 @@ class JSONSchemaValidator:
               for itemIndex in range(len(items)):
                 try:
                   self.validate(value[itemIndex], items[itemIndex])
-                except ValueError, e:
+                except ValueError as e:
                   raise ValueError("Failed to validate field '%s' list schema: %r" % (fieldname, e.message))
             else:
               raise ValueError("Length of list %r for field '%s' is not equal to length of schema list" % (value, fieldname))
@@ -152,7 +155,7 @@ class JSONSchemaValidator:
             for eachItem in value:
                 try:
                   self._validate(eachItem, items)
-                except ValueError, e:
+                except ValueError as e:
                   raise ValueError("Failed to validate field '%s' list schema: %r" % (fieldname, e.message))
           else:
             raise ValueError("Properties definition of field '%s' is not a list or an object" % fieldname)
@@ -437,12 +440,10 @@ class JSONSchemaValidator:
           # Pass the original schema object but the value of the property from
           # copy in order to validate default values.
           validator(data, fieldname, schema, new_schema.get(schemaprop))
-        except AttributeError, e:
+        except AttributeError as e:
           raise ValueError("Schema property '%s' is not supported" % schemaprop)
       
     return data
   
   def _is_string_type(self, value):
     return type(value) in (types.StringType, types.UnicodeType)
-  
-__all__ = [ 'JSONSchemaValidator' ]

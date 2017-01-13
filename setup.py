@@ -3,25 +3,15 @@
 #:tabSize=2:indentSize=2:noTabs=true:
 #:folding=explicit:collapseFolds=1:
 
-from ez_setup import use_setuptools
 import sys
-if 'cygwin' in sys.platform.lower():
-   min_version='0.6c6'
-else:
-   min_version='0.6a9'
-try:
-    use_setuptools(min_version=min_version)
-except TypeError:
-    # If a non-local ez_setup is already imported, it won't be able to
-    # use the min_version kwarg and will bail with TypeError
-    use_setuptools()
+
+from setuptools import setup, find_packages
 
 if sys.version < '2.3':
     sys.exit('Error: Python-2.3 or newer is required. Current version:\n %s' % sys.version)
 
-from setuptools import setup, find_packages
 
-VERSION = "0.2a"
+VERSION = '0.2a'
 DESCRIPTION = "json-schema validator for Python"
 LONG_DESCRIPTION = """
 jsonschema is a complete, full featured validator for json-schema
@@ -36,13 +26,16 @@ special functionality or extensions.
 jsonschema currently supports ascii and utf-8 json and schema documents.
 """
 
-CLASSIFIERS = filter(None, map(str.strip,
-"""                 
+CLASSIFIERS = map(str.strip,
+"""
 Intended Audience :: Developers
 License :: OSI Approved :: MIT License
-Programming Language :: Python
 Topic :: Software Development :: Libraries :: Python Modules
-""".splitlines()))
+Programming Language :: Python
+Programming Language :: Python :: 2.6
+Programming Language :: Python :: 2.7
+Programming Language :: Python :: 3.5
+""".splitlines())
 
 setup(name='jsonschema',
       version=VERSION,
@@ -53,7 +46,8 @@ setup(name='jsonschema',
       url='http://hg.monologista.jp/json-schema',
       license="MIT License",
       platforms=["any"],
-      packages=find_packages(exclude=['ez_setup']),
+      use_2to3=True,
+      packages=find_packages(),
       test_suite="jsonschema.tests",
       zip_safe=True
      )
