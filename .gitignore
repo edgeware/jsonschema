@@ -1,0 +1,5 @@
+*.pyc
+.tox
+build
+env
+jsonschema.egg-info

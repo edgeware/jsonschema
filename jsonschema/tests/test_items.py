@@ -27,7 +27,7 @@ class TestItems(TestCase):
     try:
       jsonschema.validate(data, self.schema1)
       jsonschema.validate(data2, self.schema1)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_items_single_fail(self):
@@ -49,7 +49,7 @@ class TestItems(TestCase):
     try:
       jsonschema.validate(data, self.schema2)
       jsonschema.validate(data2, self.schema2)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_items_multiple_fail(self):

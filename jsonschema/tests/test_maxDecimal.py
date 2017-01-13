@@ -22,7 +22,7 @@ class TestMaxDecimal(TestCase):
     try:
       jsonschema.validate(data1, self.schema)
       jsonschema.validate(data2, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_maxDecimal_fail(self):

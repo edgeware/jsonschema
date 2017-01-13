@@ -10,7 +10,7 @@ JSON Schema validation is based on the specifications of the the
 JSON Schema Proposal Second Draft
 (http://groups.google.com/group/json-schema/web/json-schema-proposal---second-draft).
 
-jsonschema provides an API similar to simplejson in that validators can be
+jsonschema provides an API similar to json in that validators can be
 overridden to support special property support or extended functionality.
 
 Parsing a simple JSON document
@@ -20,10 +20,10 @@ Parsing a simple JSON document
 
 Parsing a more complex JSON document.
 
->>> import simplejson
+>>> import json
 >>> import jsonschema
 >>> 
->>> data = simplejson.loads('["foo", {"bar":["baz", null, 1.0, 2]}]')
+>>> data = json.loads('["foo", {"bar":["baz", null, 1.0, 2]}]')
 >>> schema = {
 ...   "type":"array", 
 ...   "items":[
@@ -50,9 +50,9 @@ ValueErrors are thrown when validation errors occur.
 >>> import jsonschema
 >>> try:
 ...     jsonschema.validate("simplejson", {"type":"string","minLength":15})
-... except ValueError, e:
-...     print e.message
-... 
+... except ValueError as e:
+...     print e
+...
 Length of value 'simplejson' for field '_data' must be more than or equal to 15.000000
 
 Running from the command line
@@ -67,14 +67,14 @@ Running from the command line
 
 #TODO: Line numbers for error messages
 #TODO: Add checks to make sure the schema itself is valid
-#TODO: Support command line validation kind of like how simplejson allows 
+#TODO: Support command line validation kind of like how json allows 
 #      encoding using the "python -m<modulename>" format.
 #TODO: Support encodings other than utf-8
 
 from jsonschema.validator import JSONSchemaValidator
 
 __all__ = [ 'validate', 'JSONSchemaValidator' ]
-__version__ = '0.1a'
+__version__ = '0.2.1'
 
 def validate(data, schema, validator_cls=None, interactive_mode=True):
   '''
@@ -101,7 +101,7 @@ def validate(data, schema, validator_cls=None, interactive_mode=True):
   return v.validate(data,schema)
 
 if __name__ == '__main__':
-  import sys, simplejson
+  import sys, json
   if len(sys.argv) == 1:
     raise SystemExit("%s SCHEMAFILE [INFILE]" % (sys.argv[0],))
   elif len(sys.argv) == 2:
@@ -115,8 +115,8 @@ if __name__ == '__main__':
   else:
     raise SystemExit("%s SCHEMAFILE [INFILE]" % (sys.argv[0],))
   try:
-    obj = simplejson.load(infile)
-    schema = simplejson.load(schemafile)
+    obj = json.load(infile)
+    schema = json.load(schemafile)
     validate(obj, schema)
-  except ValueError, e:
+  except ValueError as e:
     raise SystemExit(e)

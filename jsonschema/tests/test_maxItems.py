@@ -19,7 +19,7 @@ class TestMaxItems(TestCase):
     try:
       jsonschema.validate(data1, self.schema)
       jsonschema.validate(data2, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_maxItems_pass2(self):
@@ -33,7 +33,7 @@ class TestMaxItems(TestCase):
     try:
       jsonschema.validate(data1, self.schema2)
       jsonschema.validate(data2, self.schema2)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_maxItems_fail(self):

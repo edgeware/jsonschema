@@ -19,7 +19,7 @@ class TestEnum(TestCase):
       jsonschema.validate(data2, self.schema)
       jsonschema.validate(data3, self.schema)
       jsonschema.validate(data4, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_enum_fail(self):

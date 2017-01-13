@@ -39,7 +39,7 @@ class TestProperties(TestCase):
     
     try:
       jsonschema.validate(data, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_properties2(self):
@@ -53,7 +53,7 @@ class TestProperties(TestCase):
     
     try:
       jsonschema.validate(data, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
     
   def test_properties3(self):

@@ -16,7 +16,7 @@ class TestDefault(TestCase):
       jsonschema.validate(data, self.schema)
       if (data.get("test") != 10):
         self.fail("Default value was not set")
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_default_pass_noset(self):
@@ -39,7 +39,7 @@ class TestDefault(TestCase):
       jsonschema.validate(data, self.schema, interactive_mode=True)
       if (data.get("test") != 10):
         self.fail("Default value was not set")
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_default_non_interactive(self):

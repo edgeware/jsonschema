@@ -18,7 +18,7 @@ class TestMaxLength(TestCase):
     try:
       jsonschema.validate(data1, self.schema)
       jsonschema.validate(data2, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_maxLength_pass_nonstring(self):
@@ -30,7 +30,7 @@ class TestMaxLength(TestCase):
     try:
       jsonschema.validate(data1, self.schema)
       jsonschema.validate(data2, self.schema)
-    except ValueError, e:
+    except ValueError as e:
       self.fail("Unexpected failure: %s" % e)
   
   def test_maxLength_fail(self):
