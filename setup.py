@@ -11,7 +11,7 @@ if sys.version < '2.3':
     sys.exit('Error: Python-2.3 or newer is required. Current version:\n %s' % sys.version)
 
 
-VERSION = '0.2a'
+VERSION = '0.2.1'
 DESCRIPTION = "json-schema validator for Python"
 LONG_DESCRIPTION = """
 jsonschema is a complete, full featured validator for json-schema
