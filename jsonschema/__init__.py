@@ -75,7 +75,7 @@ Running from the command line
 from jsonschema.validator import JSONSchemaValidator
 
 __all__ = [ 'validate', 'JSONSchemaValidator' ]
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 def validate(data, schema, validator_cls=None, interactive_mode=True):
   '''
