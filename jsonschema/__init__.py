@@ -47,11 +47,12 @@ Parsing a more complex JSON document.
 Handling validation errors
 ValueErrors are thrown when validation errors occur.
 
+>>> from __future__ import print_function
 >>> import jsonschema
 >>> try:
 ...     jsonschema.validate("simplejson", {"type":"string","minLength":15})
 ... except ValueError as e:
-...     print e
+...     print(e)
 ...
 Length of value 'simplejson' for field '_data' must be more than or equal to 15.000000
 

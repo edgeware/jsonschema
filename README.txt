@@ -59,8 +59,8 @@ ValueErrors are thrown when validation errors occur.
 >>> import jsonschema
 >>> try:
 ...     jsonschema.validate("simplejson", {"type":"string","minLength":15})
-... except ValueError, e:
-...     print e.message
+... except ValueError as e:
+...     print(e)
 ... 
 Length of 'simplejson' must be more than 15.000000
 
