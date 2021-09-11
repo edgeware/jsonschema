@@ -6,7 +6,7 @@ import jsonschema
 class TestPattern(TestCase):
   
   #Match a simplified regular expression for an e-mail address
-  schema = { "pattern":"^[A-Za-z0-9][A-Za-z0-9\.]*@([A-Za-z0-9]+\.)+[A-Za-z0-9]+$" }
+  schema = { "pattern": r"^[A-Za-z0-9][A-Za-z0-9\.]*@([A-Za-z0-9]+\.)+[A-Za-z0-9]+$" }
   
   def test_pattern_pass(self):
     
