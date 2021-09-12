@@ -37,7 +37,7 @@ Programming Language :: Python :: 2.7
 Programming Language :: Python :: 3.5
 """.splitlines())
 
-setup(name='jsonschema',
+setup(name='jsonschema-edgeware',
       version=VERSION,
       description=DESCRIPTION,
       long_description=LONG_DESCRIPTION,
