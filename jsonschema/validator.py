@@ -450,4 +450,4 @@ class JSONSchemaValidator:
     return data
   
   def _is_string_type(self, value):
-    return type(value) in (bytes, str)
+    return type(value) in (six.binary_type, six.text_type)
